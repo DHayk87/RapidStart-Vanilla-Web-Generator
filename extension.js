@@ -124,7 +124,8 @@ function createJSFolder(workspacePath, jsFileName) {
 }
 
 function createJS(jsPath, jsFileName) {
-    fs.writeFile(path.join(jsPath, jsFileName), "", (err) => {
+    
+    fs.writeFile(path.join(jsPath, jsFileName), "console.log('JavaScript Loaded');", (err) => {
         if (err) {
             vscode.window.showErrorMessage(`Error creating js file: ${err.message}`);
             return;

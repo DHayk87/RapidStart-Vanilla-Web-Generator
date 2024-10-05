@@ -14,7 +14,7 @@
   "contributes": {
     "commands": [{
       "command": "extension.createHtmlFile",
-      "title": "Create Raw HTML File"
+      "title": "Create Raw Project"
     }]
   },
   "scripts": {

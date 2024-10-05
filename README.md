@@ -1,65 +1,123 @@
-# html-css-js-shablon README
+# HTML, CSS, and JavaScript File Generator
 
-This is the README for your extension "html-css-js-shablon". After writing up a brief description, we recommend including the following sections.
+## Overview
+
+This VS Code extension allows developers to quickly create raw HTML, CSS, and JavaScript files with boilerplate code. Whether you're starting a new project , this tool will help speed up your workflow.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+-   **Generate HTML Files**: Create HTML files with a complete boilerplate setup, including the `<!DOCTYPE html>` declaration and linked CSS and JavaScript files.
+-   **Generate CSS Files**: Create a basic CSS file with a reset and simple style structure.
+-   **Generate JavaScript Files**: Add a basic JavaScript file to your project with an console.log `JavaScript Loaded`.
+-   **Customizable Templates**: Modify the boilerplate templates to suit your needs.
 
-For example if there is an image subfolder under your extension project workspace:
+## Commands
 
-\!\[feature X\]\(images/feature-x.png\)
+You can generate files using the following commands available via the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`):
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+-   `Create Raw Project`: Generates a new HTML, CSS, JS files with default boilerplates.
 
-## Requirements
+### HTML Boilerplate
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>New HTML Document</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+
+        <script src="./js/script.js"></script>
+    </body>
+</html>
+```
+
+### CSS Boilerplate
+
+```css
+/* Basic CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1340px;
+    margin: auto;
+}
+```
+
+### JavaScript Boilerplate
+
+```javascript
+// JavaScript simple console
+console.log("JavaScript Loaded");
+```
+
+## How to Use
+
+1. Install the extension from the VS Code Marketplace.
+2. Open the **Command Palette** (`Ctrl+Shift+P` or `Cmd+Shift+P`).
+3. Type in one of the commands:
+    - **Create Raw Project**
+4. The respective files will be created in your project’s folder.
+
+## Installation
+
+You can install this extension from the Visual Studio Code Marketplace by following these steps:
+
+1. Open **Visual Studio Code**.
+2. Go to the **Extensions** view by clicking on the Extensions icon in the Activity Bar.
+3. Search for **HTML CSS JS Generator**.
+4. Click **Install** to add it to your editor.
+
+Alternatively, you can install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/).
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+The extension comes with customizable settings that allow you to modify the default file templates:
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Open **File** > **Preferences** > **Settings**.
+2. Search for **htmlCSSJSGenerator**.
+3. Modify the templates to fit your project’s style.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+-   Some custom templates may require a restart of VS Code to take effect.
+-   Please report any bugs via the [GitHub Issues page](https://github.com/DHayk87/ext/issues).
+
+## Contributing
+
+Contributions are always welcome! To contribute:
+
+1. Fork the [repository](https://github.com/DHayk87/ext).
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+-   Initial release with commands to generate HTML, CSS, and JavaScript files with boilerplate code.
