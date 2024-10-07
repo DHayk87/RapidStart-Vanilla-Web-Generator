@@ -35,8 +35,7 @@ function activate(context) {
 
     <script src="./js/script.js"></script>
 </body>
-</html>
-        `;
+</html>`;
 
             // Define the CSS content
             const cssContent = `* {
@@ -61,8 +60,7 @@ img {
 .container {
     max-width: 1340px;
     margin: auto;
-}
-            `;
+}`;
 
             // Define the full path for the HTML file
             const filePath = path.join(workspacePath, htmlFileName);
@@ -91,13 +89,13 @@ function creatHtml(filePath, htmlContent) {
 
 function createCSSFolder(workspacePath, cssFileName, cssContent) {
     const cssPath = path.join(workspacePath, "css");
-    fs.mkdir(cssPath, (err) => {
+    fs.mkdirSync(cssPath, (err) => {
         if (err) {
             vscode.window.showErrorMessage(`Error creating css folder: ${err.message}`);
             return;
         }
         vscode.window.showInformationMessage(`CSS folder created successfully.`);
-    });
+    })
     createCSS(cssPath, cssFileName, cssContent);
 }
 
@@ -113,7 +111,7 @@ function createCSS(cssPath, cssFileName, cssContent) {
 
 function createJSFolder(workspacePath, jsFileName) {
     const jsPath = path.join(workspacePath, "js");
-    fs.mkdir(jsPath, (err) => {
+    fs.mkdirSync(jsPath, (err) => {
         if (err) {
             vscode.window.showErrorMessage(`Error creating js folder: ${err.message}`);
             return;
