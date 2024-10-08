@@ -2,14 +2,14 @@
     "name": "html-generator",
     "displayName": "HTML CSS JS generator",
     "description": "Create raw HTML files automatically",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "repository": {
         "type": "git",
         "url": "https://github.com/DHayk87/ext"
     },
     "publisher": "DHayk",
     "engines": {
-        "vscode": "^1.93.0"
+        "vscode": "^1.70.0"
     },
     "categories": [
         "Other"

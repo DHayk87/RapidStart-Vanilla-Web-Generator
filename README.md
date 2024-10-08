@@ -80,6 +80,8 @@ console.log("JavaScript Loaded");
     - **Create Raw Project**
 4. The respective files will be created in your project’s folder.
 
+![](image/preView.gif)
+
 ## Installation
 
 You can install this extension from the Visual Studio Code Marketplace by following these steps:
