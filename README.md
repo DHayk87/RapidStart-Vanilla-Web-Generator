@@ -19,7 +19,7 @@ You can generate files using the following commands available via the Command Pa
 
 ![Create Raw Project Demo VSCode](https://github.com/DHayk87/ext/blob/master/image/preView.gif)
 
-![Create Raw Project Demo VSCode](./image/preView.gif)
+![Create Raw Project Demo VSCode](https://github.com/DHayk87/ext/blob/master/image/preView2.gif)
 
 
 ### HTML Boilerplate
