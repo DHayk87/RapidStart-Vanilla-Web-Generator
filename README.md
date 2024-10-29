@@ -17,6 +17,11 @@ You can generate files using the following commands available via the Command Pa
 
 -   `Create Raw Project`: Generates a new HTML, CSS, JS files with default boilerplates.
 
+![Create Raw Project Demo VSCode](./image/preView2.gif)
+
+![Create Raw Project Demo VSCode](./image/preView.gif)
+
+
 ### HTML Boilerplate
 
 ```html
@@ -80,9 +85,8 @@ console.log("JavaScript Loaded");
     - **Create Raw Project**
 4. The respective files will be created in your project’s folder.
 
-![](image/preView.gif)
-
 ## Installation
+
 
 You can install this extension from the Visual Studio Code Marketplace by following these steps:
 
@@ -118,8 +122,5 @@ Contributions are always welcome! To contribute:
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
-## Release Notes
-
-### 1.0.0
-
--   Initial release with commands to generate HTML, CSS, and JavaScript files with boilerplate code.
+## Changelog
+For the full list of changes and updates, check out our [Changelog](./CHANGELOG.md).

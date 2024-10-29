@@ -2,20 +2,22 @@
     "name": "html-generator",
     "displayName": "HTML CSS JS generator",
     "description": "Create raw HTML files automatically",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "repository": {
         "type": "git",
         "url": "https://github.com/DHayk87/ext"
     },
     "publisher": "DHayk",
     "engines": {
-        "vscode": "^1.70.0"
+        "vscode": "^1.51.0"
     },
     "categories": [
         "Other"
     ],
     "icon": "image/Logo.png",
-    "activationEvents": [],
+    "activationEvents": [
+        "*"
+    ],
     "main": "./extension.js",
     "contributes": {
         "commands": [
@@ -31,11 +33,14 @@
         "test": "vscode-test"
     },
     "devDependencies": {
-        "@types/vscode": "^1.93.0",
         "@types/mocha": "^10.0.8",
         "@types/node": "20.x",
-        "eslint": "^9.11.1",
+        "@types/vscode": "^1.51.0",
         "@vscode/test-cli": "^0.0.10",
-        "@vscode/test-electron": "^2.4.1"
+        "@vscode/test-electron": "^2.4.1",
+        "eslint": "^9.11.1"
+    },
+    "dependencies": {
+        "@vscode/codicons": "^0.0.36"
     }
 }

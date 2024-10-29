@@ -1,9 +1,21 @@
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
+const StatusBarAlignment = vscode.StatusBarAlignment;
 
 function activate(context) {
     // Register the command that generates the HTML file
+    // icon
+    const statusBarIcon = vscode.window.createStatusBarItem(
+        StatusBarAlignment.Right,
+        100
+    );
+
+    statusBarIcon.text = `$(file-code) Raw Project`;
+    statusBarIcon.tooltip = `Click To Create Project`;
+    statusBarIcon.command = "extension.createHtmlFile";
+    statusBarIcon.show();
+    context.subscriptions.push(statusBarIcon);
     let disposable = vscode.commands.registerCommand(
         "extension.createHtmlFile",
         async function () {
@@ -66,7 +78,9 @@ img {
             const filePath = path.join(workspacePath, htmlFileName);
 
             // Write the HTML content to the file
-            creatHtml(filePath, htmlContent);
+            if (!fs.existsSync(filePath)) {
+                creatHtml(filePath, htmlContent);
+            }
             // Write the CSS folder and content to the file
             createCSSFolder(workspacePath, cssFileName, cssContent);
             // Write the JS folder and content to the file
@@ -89,47 +103,64 @@ function creatHtml(filePath, htmlContent) {
 
 function createCSSFolder(workspacePath, cssFileName, cssContent) {
     const cssPath = path.join(workspacePath, "css");
-    fs.mkdirSync(cssPath, (err) => {
-        if (err) {
-            vscode.window.showErrorMessage(`Error creating css folder: ${err.message}`);
-            return;
-        }
-        vscode.window.showInformationMessage(`CSS folder created successfully.`);
-    })
+    if (!fs.existsSync(cssPath)) {
+        fs.mkdirSync(cssPath, (err) => {
+            if (err) {
+                vscode.window.showErrorMessage(
+                    `Error creating css folder: ${err.message}`
+                );
+                return;
+            }
+            vscode.window.showInformationMessage(`CSS folder created successfully.`);
+        });
+    }
     createCSS(cssPath, cssFileName, cssContent);
 }
 
 function createCSS(cssPath, cssFileName, cssContent) {
-    fs.writeFile(path.join(cssPath, cssFileName), cssContent, (err) => {
-        if (err) {
-            vscode.window.showErrorMessage(`Error creating file: ${err.message}`);
-            return;
-        }
-        vscode.window.showInformationMessage(`CSS file created successfully`);
-    });
+    if (!fs.existsSync(path.join(cssPath, cssFileName))) {
+        fs.writeFile(path.join(cssPath, cssFileName), cssContent, (err) => {
+            if (err) {
+                vscode.window.showErrorMessage(`Error creating file: ${err.message}`);
+                return;
+            }
+            vscode.window.showInformationMessage(`CSS file created successfully`);
+        });
+    }
 }
 
 function createJSFolder(workspacePath, jsFileName) {
     const jsPath = path.join(workspacePath, "js");
-    fs.mkdirSync(jsPath, (err) => {
-        if (err) {
-            vscode.window.showErrorMessage(`Error creating js folder: ${err.message}`);
-            return;
-        }
-        vscode.window.showInformationMessage(`JS folder created successfully`);
-    });
+    if (!fs.existsSync(jsPath)) {
+        fs.mkdirSync(jsPath, (err) => {
+            if (err) {
+                vscode.window.showErrorMessage(
+                    `Error creating js folder: ${err.message}`
+                );
+                return;
+            }
+            vscode.window.showInformationMessage(`JS folder created successfully`);
+        });
+    }
     createJS(jsPath, jsFileName);
 }
 
 function createJS(jsPath, jsFileName) {
-    
-    fs.writeFile(path.join(jsPath, jsFileName), "console.log('JavaScript Loaded');", (err) => {
-        if (err) {
-            vscode.window.showErrorMessage(`Error creating js file: ${err.message}`);
-            return;
-        }
-        vscode.window.showInformationMessage(`JS file created successfully`);
-    });
+    if (!fs.existsSync(path.join(jsPath, jsFileName))) {
+        fs.writeFile(
+            path.join(jsPath, jsFileName),
+            "console.log('JavaScript Loaded');",
+            (err) => {
+                if (err) {
+                    vscode.window.showErrorMessage(
+                        `Error creating js file: ${err.message}`
+                    );
+                    return;
+                }
+                vscode.window.showInformationMessage(`JS file created successfully`);
+            }
+        );
+    }
 }
 
 function deactivate() {}
