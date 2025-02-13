@@ -1,24 +1,24 @@
 const vscode = require("vscode");
-const fs = require("fs");
+const fs = require("fs").promises; // Use promises for file system
 const path = require("path");
 const StatusBarAlignment = vscode.StatusBarAlignment;
 
-function activate(context) {
-    // Register the command that generates the HTML file
-    // icon
+async function activate(context) {
+    // Create the status bar item
     const statusBarIcon = vscode.window.createStatusBarItem(
         StatusBarAlignment.Right,
         100
     );
-
     statusBarIcon.text = `$(file-code) Raw Project`;
     statusBarIcon.tooltip = `Click To Create Project`;
     statusBarIcon.command = "extension.createHtmlFile";
     statusBarIcon.show();
     context.subscriptions.push(statusBarIcon);
-    let disposable = vscode.commands.registerCommand(
+
+    // Register the command that generates the HTML file
+    const disposable = vscode.commands.registerCommand(
         "extension.createHtmlFile",
-        async function () {
+        async () => {
             // Get the current workspace folder
             const workspaceFolders = vscode.workspace.workspaceFolders;
             if (!workspaceFolders) {
@@ -44,7 +44,6 @@ function activate(context) {
 </head>
 <body>
     <h1>Hello, World!</h1>
-
     <script src="./js/script.js"></script>
 </body>
 </html>`;
@@ -74,92 +73,62 @@ img {
     margin: auto;
 }`;
 
-            // Define the full path for the HTML file
-            const filePath = path.join(workspacePath, htmlFileName);
+            try {
+                // Create HTML file
+                const filePath = path.join(workspacePath, htmlFileName);
+                if (!(await fileExists(filePath))) {
+                    await writeFile(filePath, htmlContent);
+                }
 
-            // Write the HTML content to the file
-            if (!fs.existsSync(filePath)) {
-                creatHtml(filePath, htmlContent);
+                // Create CSS folder and file
+                await createDirectoryAndFile(
+                    path.join(workspacePath, "css"),
+                    cssFileName,
+                    cssContent
+                );
+
+                // Create JS folder and file
+                await createDirectoryAndFile(
+                    path.join(workspacePath, "js"),
+                    jsFileName,
+                    "console.log('JavaScript Loaded');"
+                );
+            } catch (error) {
+                vscode.window.showErrorMessage(`Error: ${error.message}`);
             }
-            // Write the CSS folder and content to the file
-            createCSSFolder(workspacePath, cssFileName, cssContent);
-            // Write the JS folder and content to the file
-            createJSFolder(workspacePath, jsFileName);
         }
     );
+    6;
 
     context.subscriptions.push(disposable);
 }
 
-function creatHtml(filePath, htmlContent) {
-    fs.writeFile(filePath, htmlContent, (err) => {
-        if (err) {
-            vscode.window.showErrorMessage(`Error creating file: ${err.message}`);
-            return;
+// Helper functions
+async function writeFile(filePath, content) {
+    await fs.writeFile(filePath, content);
+    vscode.window.showInformationMessage(
+        `${path.basename(filePath)} created successfully.`
+    );
+}
+
+async function createDirectoryAndFile(dirPath, fileName, content) {
+    try {
+        await fs.mkdir(dirPath, { recursive: true }); // Create directory if it doesn't exist
+        const filePath = path.join(dirPath, fileName);
+        if (!(await fileExists(filePath))) {
+            await writeFile(filePath, content);
         }
-        vscode.window.showInformationMessage(`HTML file created successfully.`);
-    });
-}
-
-function createCSSFolder(workspacePath, cssFileName, cssContent) {
-    const cssPath = path.join(workspacePath, "css");
-    if (!fs.existsSync(cssPath)) {
-        fs.mkdirSync(cssPath, (err) => {
-            if (err) {
-                vscode.window.showErrorMessage(
-                    `Error creating css folder: ${err.message}`
-                );
-                return;
-            }
-            vscode.window.showInformationMessage(`CSS folder created successfully.`);
-        });
-    }
-    createCSS(cssPath, cssFileName, cssContent);
-}
-
-function createCSS(cssPath, cssFileName, cssContent) {
-    if (!fs.existsSync(path.join(cssPath, cssFileName))) {
-        fs.writeFile(path.join(cssPath, cssFileName), cssContent, (err) => {
-            if (err) {
-                vscode.window.showErrorMessage(`Error creating file: ${err.message}`);
-                return;
-            }
-            vscode.window.showInformationMessage(`CSS file created successfully`);
-        });
+    } catch (error) {
+        throw new Error(`Error creating directory or file: ${error.message}`);
     }
 }
 
-function createJSFolder(workspacePath, jsFileName) {
-    const jsPath = path.join(workspacePath, "js");
-    if (!fs.existsSync(jsPath)) {
-        fs.mkdirSync(jsPath, (err) => {
-            if (err) {
-                vscode.window.showErrorMessage(
-                    `Error creating js folder: ${err.message}`
-                );
-                return;
-            }
-            vscode.window.showInformationMessage(`JS folder created successfully`);
-        });
-    }
-    createJS(jsPath, jsFileName);
-}
-
-function createJS(jsPath, jsFileName) {
-    if (!fs.existsSync(path.join(jsPath, jsFileName))) {
-        fs.writeFile(
-            path.join(jsPath, jsFileName),
-            "console.log('JavaScript Loaded');",
-            (err) => {
-                if (err) {
-                    vscode.window.showErrorMessage(
-                        `Error creating js file: ${err.message}`
-                    );
-                    return;
-                }
-                vscode.window.showInformationMessage(`JS file created successfully`);
-            }
-        );
+async function fileExists(filePath) {
+    try {
+        await fs.access(filePath);
+        return true; // File exists
+    } catch {
+        return false; // File does not exist
     }
 }
 
