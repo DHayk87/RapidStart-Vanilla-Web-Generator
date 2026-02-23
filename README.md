@@ -1,128 +1,68 @@
-# HTML, CSS, and JavaScript File Generator
+# RapidStart Web Generator
 
 ## Overview
 
-This VS Code extension allows developers to quickly create raw HTML, CSS, and JavaScript files with boilerplate code. Whether you're starting a new project , this tool will help speed up your workflow.
+Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boilerplate. Whether you're starting a new project or a quick demo, this extension streamlines your workflow by generating the essential structure in seconds.
 
 ## Features
 
--   **Generate HTML Files**: Create HTML files with a complete boilerplate setup, including the `<!DOCTYPE html>` declaration and linked CSS and JavaScript files.
--   **Generate CSS Files**: Create a basic CSS file with a reset and simple style structure.
--   **Generate JavaScript Files**: Add a basic JavaScript file to your project with an console.log `JavaScript Loaded`.
--   **Customizable Templates**: Modify the boilerplate templates to suit your needs.
-
-## Commands
-
-You can generate files using the following commands available via the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`):
-
--   `Create Raw Project`: Generates a new HTML, CSS, JS files with default boilerplates.
-
-![Create Raw Project Demo VSCode](https://raw.githubusercontent.com/DHayk87/ext/master/image/preView.gif)
-
-![Create Raw Project Demo VSCode](https://raw.githubusercontent.com/DHayk87/ext/master/image/preView2.gif)
-
-
-
-
-### HTML Boilerplate
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>New HTML Document</title>
-        <link rel="stylesheet" href="./css/style.css" />
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-
-        <script src="./js/script.js"></script>
-    </body>
-</html>
-```
-
-### CSS Boilerplate
-
-```css
-/* Basic CSS Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-}
-
-ul,
-ol {
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-.container {
-    max-width: 1340px;
-    margin: auto;
-}
-```
-
-### JavaScript Boilerplate
-
-```javascript
-// JavaScript simple console
-console.log("JavaScript Loaded");
-```
+- **One-Click Initialization**: Generate a complete `index.html`, `style.css`, and `script.js` directly from the status bar.
+- **Explorer Integration**: Right-click any folder in the Explorer and select **"Create Raw Project"** to initialize in that specific location.
+- **Customizable Templates**: Fully customize the generated code snippets through VS Code settings.
+- **Live Preview Integration**: Automatically trigger Live Server to preview your creation immediately.
+- **TypeScript Powered**: Robust and performant core built on modern VS Code APIs.
 
 ## How to Use
 
-1. Install the extension from the VS Code Marketplace.
-2. Open the **Command Palette** (`Ctrl+Shift+P` or `Cmd+Shift+P`).
-3. Type in one of the commands:
-    - **Create Raw Project**
-4. The respective files will be created in your project’s folder.
+### Via Status Bar
+
+1. Open a workspace folder.
+2. Click the `$(file-code) Raw Project` icon in the right side of the status bar.
+3. Boilerplate files will be created and `index.html` will open automatically.
+
+### Via Explorer Context Menu
+
+1. Right-click any folder in the Side Bar.
+2. Select **"Create Raw Project"**.
+3. The project will be initialized inside the selected folder.
+
+## Technical Details
+
+### Generated Boilerplate
+
+The extension generates a clean, modern structure:
+
+- `index.html`: Modern HTML5 boilerplate with pre-linked CSS and JS.
+- `css/style.css`: Basic CSS reset and container utilities.
+- `js/script.js`: Clean entry point with a verification log.
+
+### Extension Settings
+
+Modify templates by navigating to `File > Preferences > Settings` and searching for `htmlGenerator`:
+
+- `htmlGenerator.customHtmlTemplate`: Override the default HTML boilerplate.
+- `htmlGenerator.customCssTemplate`: Override the default CSS styles.
+- `htmlGenerator.customJsTemplate`: Override the default JavaScript logic.
+
+## Dependencies
+
+This extension works best with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension for real-time previewing.
 
 ## Installation
 
-
-You can install this extension from the Visual Studio Code Marketplace by following these steps:
-
 1. Open **Visual Studio Code**.
-2. Go to the **Extensions** view by clicking on the Extensions icon in the Activity Bar.
-3. Search for **HTML CSS JS Generator**.
-4. Click **Install** to add it to your editor.
-
-Alternatively, you can install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/).
-
-## Extension Settings
-
-The extension comes with customizable settings that allow you to modify the default file templates:
-
-1. Open **File** > **Preferences** > **Settings**.
-2. Search for **htmlCSSJSGenerator**.
-3. Modify the templates to fit your project’s style.
-
-## Known Issues
-
--   Some custom templates may require a restart of VS Code to take effect.
--   Please report any bugs via the [GitHub Issues page](https://github.com/DHayk87/ext/issues).
+2. Go to the **Extensions** view (`Ctrl+Shift+X`).
+3. Search for **RapidStart Web Generator**.
+4. Click **Install**.
 
 ## Contributing
 
-Contributions are always welcome! To contribute:
+Contributions are welcome! If you have suggestions or find bugs, please feel free to:
 
-1. Fork the [repository](https://github.com/DHayk87/ext).
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and submit a pull request.
+1. Fork the [repository](https://github.com/DHayk87/RapidStart-Vanilla-Web-Generator).
+2. Create a feature branch.
+3. Submit a Pull Request.
 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
-
-## Changelog
-For the full list of changes and updates, check out our [Changelog](./CHANGELOG.md).

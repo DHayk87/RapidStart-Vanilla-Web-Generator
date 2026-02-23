@@ -1,35 +1,85 @@
 {
     "name": "html-generator",
-    "displayName": "HTML CSS JS generator",
-    "description": "Create raw HTML files automatically",
+    "displayName": "RapidStart Web Generator",
+    "description": "Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS templates. Features single-click setup, right-click Explorer support, and Live Server integration.",
     "version": "0.0.5",
     "repository": {
         "type": "git",
-        "url": "https://github.com/DHayk87/ext"
+        "url": "https://github.com/DHayk87/RapidStart-Vanilla-Web-Generator"
     },
     "publisher": "DHayk",
     "engines": {
-        "vscode": "^1.51.0"
+        "vscode": "^1.75.0"
     },
     "categories": [
+        "Snippets",
+        "Programming Languages",
         "Other"
+    ],
+    "keywords": [
+        "html",
+        "css",
+        "javascript",
+        "generator",
+        "vanilla",
+        "web-development",
+        "starter-kit",
+        "template",
+        "rapid-start"
     ],
     "icon": "image/Logo.png",
     "activationEvents": [
         "onStartupFinished"
     ],
-    "main": "./extension.js",
+    "extensionDependencies": [
+        "ritwickdey.liveserver"
+    ],
+    "main": "./out/extension.js",
+    "types": "./src/extension.ts",
     "contributes": {
         "commands": [
             {
-                "command": "extension.createHtmlFile",
-                "title": "Create Raw Project"
+                "command": "htmlGenerator.createHtmlFile",
+                "title": "Create Vanilla Project",
+                "category": "RapidStart"
             }
-        ]
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "when": "explorerResourceIsFolder",
+                    "command": "htmlGenerator.createHtmlFile",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "HTML Generator",
+            "properties": {
+                "htmlGenerator.customHtmlTemplate": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Custom HTML template. If empty, uses the default template."
+                },
+                "htmlGenerator.customCssTemplate": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Custom CSS template. If empty, uses the default template."
+                },
+                "htmlGenerator.customJsTemplate": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Custom JS template. If empty, uses the default template."
+                }
+            }
+        }
     },
     "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
         "lint": "eslint .",
-        "pretest": "npm run lint",
         "test": "vscode-test"
     },
     "devDependencies": {
@@ -38,7 +88,8 @@
         "@types/vscode": "^1.51.0",
         "@vscode/test-cli": "^0.0.10",
         "@vscode/test-electron": "^2.4.1",
-        "eslint": "^9.11.1"
+        "eslint": "^9.11.1",
+        "typescript": "^5.9.3"
     },
     "dependencies": {
         "@vscode/codicons": "^0.0.36"

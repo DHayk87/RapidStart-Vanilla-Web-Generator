@@ -1,10 +1,18 @@
+# Development Files
+src/**
+tsconfig.json
+eslint.config.mjs
 .vscode/**
 .vscode-test/**
 test/**
 .gitignore
-.yarnrc
+.vscodeignore
 vsc-extension-quickstart.md
-**/jsconfig.json
+TECHNICAL_AUDIT.md
+
+# Build Artifacts
 **/*.map
-**/eslint.config.mjs
 **/.vscode-test.*
+
+# Dependencies (vsce handles node_modules efficiently, but we can be explicit if needed)
+# node_modules is ignored by vsce by default unless specified otherwise.

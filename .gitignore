@@ -1,25 +1,25 @@
+# Dependencies
 node_modules/
-.vscode/
-.vscode-test/
-html-generator/
-.vscode/**
-.vscode-test/**
-test/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/jsconfig.json
-**/*.map
-**/eslint.config.mjs
-**/.vscode-test.*
-.vscode/**
-.vscode-test/**
-test/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/jsconfig.json
-**/*.map
-**/eslint.config.mjs
-**/.vscode-test.*
+
+# Compilation Output
+out/
+
+# IDE / Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
 *.vsix
+**/*.map
+
+# Tests and coverage
+.vscode-test/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
+TECHNICAL_AUDIT.md
+CHANGELOG.md.bak
