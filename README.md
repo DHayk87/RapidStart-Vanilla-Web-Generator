@@ -21,7 +21,7 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 3. Boilerplate files will be created and `index.html` will open automatically.
 
 <p align="center">
-  <img src="image/semple_2.gif" alt="Usage Example 2" width="600" />
+  <img src="https://raw.githubusercontent.com/DHayk87/RapidStart-Vanilla-Web-Generator/master/image/semple_2.gif" alt="Usage Example 2" width="600" />
 </p>
 
 ### Via Explorer Context Menu
@@ -31,7 +31,7 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 3. The project will be initialized inside the selected folder.
 
 <p align="center">
-  <img src="image/semple_1.gif" alt="Usage Example 1" width="600" />
+  <img src="https://raw.githubusercontent.com/DHayk87/RapidStart-Vanilla-Web-Generator/master/image/semple_1.gif" alt="Usage Example 1" width="600" />
 </p>
 
 ### Via Command Palette
@@ -41,7 +41,7 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 3. Select **"RapidStart: Create Vanilla Project"**.
 
 <p align="center">
-  <img src="image/semple_3.gif" alt="Usage Example 3" width="600" />
+  <img src="https://raw.githubusercontent.com/DHayk87/RapidStart-Vanilla-Web-Generator/master/image/semple_3.gif" alt="Usage Example 3" width="600" />
 </p>
 
 ## Technical Details
