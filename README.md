@@ -20,11 +20,29 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 2. Click the `$(file-code) Raw Project` icon in the right side of the status bar.
 3. Boilerplate files will be created and `index.html` will open automatically.
 
+<p align="center">
+  <img src="image/semple_2.gif" alt="Usage Example 2" width="600" />
+</p>
+
 ### Via Explorer Context Menu
 
 1. Right-click any folder in the Side Bar.
 2. Select **"Create Raw Project"**.
 3. The project will be initialized inside the selected folder.
+
+<p align="center">
+  <img src="image/semple_1.gif" alt="Usage Example 1" width="600" />
+</p>
+
+### Via Command Palette
+
+1. Press `F1` or `Ctrl+Shift+P` to open the Command Palette.
+2. Type **"Rapid"**.
+3. Select **"RapidStart: Create Vanilla Project"**.
+
+<p align="center">
+  <img src="image/semple_3.gif" alt="Usage Example 3" width="600" />
+</p>
 
 ## Technical Details
 
@@ -66,3 +84,9 @@ Contributions are welcome! If you have suggestions or find bugs, please feel fre
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of recent changes.
