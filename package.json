@@ -2,7 +2,7 @@
     "name": "html-generator",
     "displayName": "RapidStart Web Generator",
     "description": "Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS templates. Features single-click setup, right-click Explorer support, and Live Server integration.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/DHayk87/RapidStart-Vanilla-Web-Generator"
@@ -31,11 +31,7 @@
     "activationEvents": [
         "onStartupFinished"
     ],
-    "extensionDependencies": [
-        "ritwickdey.liveserver"
-    ],
     "main": "./out/extension.js",
-    "types": "./src/extension.ts",
     "contributes": {
         "commands": [
             {
@@ -56,6 +52,16 @@
         "configuration": {
             "title": "HTML Generator",
             "properties": {
+                "htmlGenerator.autoStartLiveServer": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically launch Live Server after creating a project if Live Server is installed."
+                },
+                "htmlGenerator.customTemplateDirectory": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Path to a directory containing custom templates (html.template, css.template, js.template, or index.html, style.css, script.js). Can be relative to the workspace root or an absolute path."
+                },
                 "htmlGenerator.customHtmlTemplate": {
                     "type": "string",
                     "default": "",
@@ -79,19 +85,18 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
+        "test:unit": "mocha --ui tdd out/test/suite/templates.test.js",
         "lint": "eslint .",
         "test": "vscode-test"
     },
     "devDependencies": {
         "@types/mocha": "^10.0.8",
         "@types/node": "20.x",
-        "@types/vscode": "^1.51.0",
+        "@types/vscode": "^1.75.0",
         "@vscode/test-cli": "^0.0.10",
         "@vscode/test-electron": "^2.4.1",
         "eslint": "^9.11.1",
-        "typescript": "^5.9.3"
-    },
-    "dependencies": {
-        "@vscode/codicons": "^0.0.36"
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.72.2"
     }
 }

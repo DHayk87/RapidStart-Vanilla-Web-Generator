@@ -21,6 +21,15 @@ export async function writeFile(uri: vscode.Uri, content: string): Promise<void>
 }
 
 /**
+ * Reads UTF-8 content from a file at the given URI.
+ */
+export async function readFile(uri: vscode.Uri): Promise<string> {
+    const bytes = await vscode.workspace.fs.readFile(uri);
+    const decoder = new TextDecoder();
+    return decoder.decode(bytes);
+}
+
+/**
  * Creates a directory at the given URI.
  */
 export async function createDirectory(uri: vscode.Uri): Promise<void> {

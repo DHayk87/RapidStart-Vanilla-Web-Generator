@@ -17,7 +17,7 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 ### Via Status Bar
 
 1. Open a workspace folder.
-2. Click the `$(file-code) Raw Project` icon in the right side of the status bar.
+2. Click the `$(file-code) Vanilla Project` icon in the right side of the status bar.
 3. Boilerplate files will be created and `index.html` will open automatically.
 
 <p align="center">
@@ -27,7 +27,7 @@ Rapidly initialize vanilla web projects with customizable HTML, CSS, and JS boil
 ### Via Explorer Context Menu
 
 1. Right-click any folder in the Side Bar.
-2. Select **"Create Raw Project"**.
+2. Select **"Create Vanilla Project"**.
 3. The project will be initialized inside the selected folder.
 
 <p align="center">
@@ -56,15 +56,30 @@ The extension generates a clean, modern structure:
 
 ### Extension Settings
 
-Modify templates by navigating to `File > Preferences > Settings` and searching for `htmlGenerator`:
+Modify templates and behavior by navigating to `File > Preferences > Settings` and searching for `htmlGenerator`:
 
-- `htmlGenerator.customHtmlTemplate`: Override the default HTML boilerplate.
-- `htmlGenerator.customCssTemplate`: Override the default CSS styles.
-- `htmlGenerator.customJsTemplate`: Override the default JavaScript logic.
+- `htmlGenerator.autoStartLiveServer`: Automatically trigger Live Server after project generation (default: `true`).
+- `htmlGenerator.customTemplateDirectory`: Path to a directory containing your custom templates (`html.template` / `index.html`, `css.template` / `style.css`, `js.template` / `script.js`). Can be relative to your workspace or an absolute path.
+- `htmlGenerator.customHtmlTemplate`: Override the default HTML boilerplate inline.
+- `htmlGenerator.customCssTemplate`: Override the default CSS styles inline.
+- `htmlGenerator.customJsTemplate`: Override the default JavaScript logic inline.
 
-## Dependencies
+### Template Variables
 
-This extension works best with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension for real-time previewing.
+All templates support dynamic placeholder tags which are automatically interpolated during generation:
+
+| Variable | Description | Example Output |
+| :--- | :--- | :--- |
+| `{{projectName}}` | Name of the active folder/project | `my-portfolio` |
+| `{{title}}` | Formatted title case project name | `My Portfolio` |
+| `{{year}}` | Current calendar year | `2026` |
+| `{{date}}` | Current date in ISO format | `2026-11-11` |
+
+Both `{{key}}` and `${key}` syntaxes are supported.
+
+## Recommended Extensions
+
+This extension integrates smoothly with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension for real-time live reload and browser preview.
 
 ## Installation
 

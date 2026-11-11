@@ -1,5 +1,6 @@
-import { defineConfig } from '@vscode/test-cli';
+import { defineConfig } from "@vscode/test-cli";
 
 export default defineConfig({
-	files: 'test/**/*.test.js',
+    version: "1.94.0",
+    files: "out/test/**/*.test.js",
 });

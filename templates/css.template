@@ -1,7 +1,7 @@
 :root {
     --primary-color: #3b82f6;
-    --text-color: #1f2937;
-    --bg-color: #ffffff;
+    --text-color: #ffffff;
+    --bg-color: #24282B;
     --container-width: 1340px;
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }

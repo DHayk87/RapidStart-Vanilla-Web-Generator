@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-11-11
+
+### Added
+- **File-Based Custom Templates**: New `htmlGenerator.customTemplateDirectory` setting allows loading custom templates directly from a workspace or absolute folder.
+- **Dynamic Template Placeholders**: Support for `{{projectName}}`, `{{title}}`, `{{year}}`, and `{{date}}` (or `${variable}`) interpolated automatically during project generation.
+- **Updated Default Boilerplate**:
+  - HTML5 template with dynamic `{{title}}` placeholder.
+  - Clean CSS template with responsive container, CSS variables, and configured default theme colors (`#24282B` background, `#ffffff` text).
+  - Clean JavaScript entry point.
+- **Live Server Setting**: Added `htmlGenerator.autoStartLiveServer` to toggle automatic Live Server launching.
+- **Automated CI/CD Workflows**: Added GitHub Actions workflows for multi-OS CI testing and automated `.vsix` packaging on release tags.
+- **TypeScript Test Suite**: Replaced stub tests with comprehensive TypeScript suites for templates, template utilities, and extension integration tests.
+
+### Changed
+- **Unified Conflict Resolution**: Replaced sequential overwrite prompts with an upfront, single dialog offering `Overwrite`, `Skip Existing`, or `Cancel`.
+- **Softened Live Server Dependency**: Changed hard `extensionDependencies` to optional `extensionRecommendations` in `.vscode/extensions.json`.
+- **Consistent Naming**: Aligned status bar and command titles to "Create Vanilla Project".
+- **ESLint v9 Integration**: Configured `typescript-eslint` with global ignore rules for `.vscode-test`, `out`, and `node_modules`.
+
+### Removed
+- Removed unused `@vscode/codicons` runtime dependency.
+- Removed invalid `"types": "./src/extension.ts"` from manifest.
+
 ## [1.0.0] - 2026-03-17
 
 ### Added
