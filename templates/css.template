@@ -1,4 +1,5 @@
 :root {
+    color-scheme: dark;
     --primary-color: #3b82f6;
     --text-color: #ffffff;
     --bg-color: #24282B;
@@ -6,7 +7,7 @@
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,6 +15,7 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -21,7 +23,16 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     line-height: 1.5;
-    min-height: 100%;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4 {
+    text-wrap: balance;
 }
 
 a {
@@ -38,14 +49,37 @@ ul, ol {
     list-style: none;
 }
 
-img {
+img, picture, video, canvas, svg {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+}
+
+button, [role="button"] {
+    cursor: pointer;
 }
 
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

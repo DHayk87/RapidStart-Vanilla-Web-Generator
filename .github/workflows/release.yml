@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     name: Package and Publish
@@ -16,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install Dependencies
@@ -26,10 +29,11 @@ jobs:
         run: |
           npm run compile
           npm run lint
+          npm run test:unit
           xvfb-run -a npm test
 
       - name: Package Extension (.vsix)
-        run: npx @vscode/vsce package --no-dependencies
+        run: npx --yes @vscode/vsce package --no-dependencies
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -40,8 +44,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to VS Code Marketplace
-        if: env.VSCE_PAT != ''
-        run: npx @vscode/vsce publish -p ${{ secrets.VSCE_PAT }} --no-dependencies
+        run: npx --yes @vscode/vsce publish --no-dependencies
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-
